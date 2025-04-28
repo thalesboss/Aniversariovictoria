@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background-color: #f8f0fb;
+            overflow-x: hidden;
+            position: relative;
+        }
+        #titulo-principal {
+            font-size: 3.5em;
+            color: #e91e63;
+            margin-bottom: 0.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease, pulse 2s infinite alternate;
+            cursor: pointer;
+            z-index: 2;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.04); }
+        }
+        #frase-aniversario {
+            font-size: 1.5em;
+            color: #777;
+            margin-bottom: 2em;
+            text-align: center;
+            padding: 0 1.5em;
+            line-height: 1.7;
+            z-index: 2;
+            font-weight: 400;
+        }
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            max-width: 1000px;
+            margin-bottom: 2em;
+            z-index: 2;
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3em;
+            align-items: center;
+            opacity: 0;
+            animation: slideIn 0.8s ease forwards;
+        }
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+            animation-delay: 0.3s;
+        }
+        .timeline-item:nth-child(even) {
+            animation-delay: 0.6s;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .timeline-image-container {
+            width: 40%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        .timeline-image-container:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .timeline-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .timeline-text-container {
+            width: 55%;
+            padding: 1.5em;
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-weight: 400;
+            line-height: 1.7;
+            color: #555;
+            position: relative;
+        }
+        .timeline-text-container h2 {
+            font-size: 1.5em;
+            color: #d81b60;
+            margin-bottom: 0.5em;
+            font-weight: 600;
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline-text-container h2:before {
+            content: '🎁';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-55%);
+            font-size: 1em;
+        }
+        .timeline-text-container p {
+            font-size: 1.1em;
+        }
+        #video-container {
+            margin-top: 2em;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            max-width: 95%;
+            width: auto;
+            z-index: 2;
+            transition: transform 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #video-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        #video-aniversario {
+            border-radius: 12px;
+            width: 100%;
+            height: auto;
+        }
+        #frase-video {
+            font-size: 2.5em;
+            color: #e91e63;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            z-index: 3;
+            text-align: center;
+            padding: 0.5em;
+            border-radius: 8px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1em;
+            animation: textoEntrada 1s ease, pulse 2s infinite alternate;
+        }
+        @keyframes textoEntrada {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .balloon {
+            position: absolute;
+            width: 60px;
+            height: 85px;
+            border-radius: 50%;
+            background-color: #f44336;
+            animation: float 4.5s infinite;
+            bottom: -60px;
+            z-index: 1;
+        }
+        .balloon:nth-child(2) {
+            background-color: #ffc107;
+            left: 15%;
+            animation-delay: 0.7s;
+        }
+        .balloon:nth-child(3) {
+            background-color: #00bcd4;
+            left: 35%;
+            animation-delay: 1.2s;
+        }
+        .balloon:nth-child(4) {
+            background-color: #8bc34a;
+            left: 55%;
+            animation-delay: 1.7s;
+        }
+        .balloon:nth-child(5) {
+            background-color: #e91e63;
+            left: 75%;
+            animation-delay: 2.2s;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-40px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 768px) {
+            #titulo-principal {
+                font-size: 2.8em;
+            }
+            .timeline-item {
+                flex-direction: column;
+            }
+            .timeline-image-container, .timeline-text-container {
+                width: 100%;
+                margin-bottom: 1.5em;
+            }
+            .timeline-text-container {
+                padding: 1em;
+            }
+            #video-container {
+                max-width: 98%;
+            }
+            #frase-video {
+                font-size: 1.8em;
+            }
+            .balloon {
+                width: 50px;
+                height: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo-principal">Feliz Aniversário Victoria!</h1>
+    <p id="frase-aniversario">Hoje é seu dia e nada melhor do que um presente especial para uma pessoa muito especial.</p>
+    <main class="timeline">
+        <section class="timeline-item">
+            <div class="timeline-image-container">
+                <img id="primeira-imagem" src="IMG-20240908-WA0040.jpg" alt="Foto 1" class="timeline-image">
+            </div>
+            <div class="timeline-text-container">
+                <h2>Amor</h2>
+                <p>Seu jeito único e perfeito me fez apaixonar por você. Foi algo único e que eu nunca senti, que deu frio na barriga e ao mesmo tempo foi a melhor sensação do mundo, é algo que ficará para sempre em meu coração, todo o amor que é amar uma princesa. Meu presente mais precioso e amor da minha vida. </p>
+            </div>
+        </section>
+        <section class="timeline-item">
+            <div class="timeline-image-container">
+                <img src="IMG-20241224-WA0193.jpg" alt="Foto 2" class="timeline-image">
+            </div>
+            <div class="timeline-text-container">
+                <h2>Personalidade</h2>
+                <p>O que me encanta em você vai muito além do óbvio. Sua coragem, sua personalidade ilumina não só a minha vida, mas a vida de todo mundo que conhece essa pessoa doce, fofa, gentil, inteligente... É impossível estar perto de você e não se admirar como você é.</p>
+            </div>
+        </section>
+        <section class="timeline-item">
+            <div class="timeline-image-container">
+                <img src="IMG-20241113-WA0061.jpg" alt="Foto 3" class="timeline-image">
+            </div>
+            <div class="timeline-text-container">
+                <h2>Inteligência</h2>
+                <p>Inteligêcia uma pode significar tanta coisa e ao mesmo tempo nada, mas em você eu não tenho duvida que significa muitas coisas. A pessoa mais inteligênte que eu conheco e não é só sobre estudos, mas em tudo que você faz, me ensina demais e aprende a cada dia, sendo uma menina mais perfeita que a prória perfeição.</p>
+            </div>
+        </section>
+        <section class="timeline-item">
+            <div class="timeline-image-container">
+                <img src="IMG-20250205-WA0035.jpg" alt="Foto 4" class="timeline-image">
+            </div>
+            <div class="timeline-text-container">
+                <h2>Beleza</h2>
+                <p>Eu poderia dizer aqui todas as partes da sua beleza que eu amo em você, mas seria humanamente impossível. Platão diz "Tudo que é belo é tocado pelo olhar do amor". Você é a definição de beleza, a menina mais linda do mundo, seu sorriso lindo me faz sentir como se eu estivesse nas nuvens, seu rosto maravilhoso que me dá muita vontade dar beijinhos, o cabelo mais lindo de todos exalando beleza e cuidado, e tanta outras coisa que faz de você a menina dos meus sonho e a minha felicidade diaria de saber que eu amo você.</p>
+            </div>
+        </section>
+        <section class="timeline-item">
+            <div class="timeline-image-container">
+                <img src="IMG-20241229-WA0005.jpg" alt="Foto 5" class="timeline-image">
+            </div>
+            <div class="timeline-text-container">
+                <h2>Gratidão</h2>
+                <p>Eu tenho muito orgulho de namora com você, contruir a nossas vidas juntos, te ajudar a realizar seus sonhos e desejos, te fazer a menina mais feliz do mundo. Isso faz o meu dia ver a sua felicidade, suas risadas, meu dia fica muito mais iluminado com a sua presença e todo o seu amor. A menina da minha vida, dos meus sonhos e para todo o sempre. Te amooo ❤❤❤</p>
+            </div>
+        </section>
+    </main>
+    <div id="video-container">
+        <p id="frase-video">Nada melhor do que ouvir um recadinho do seu namorado não é mesmo? O que será que eu vou dizer???</p>
+        <iframe id="video-aniversario" src="20250428_124909.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <script>
+        const titulo = document.getElementById('titulo-principal');
+        const body = document.querySelector('body');
+        const primeiraImagem = document.getElementById('primeira-imagem');
+        // Array de cores para a purpurina
+        const coresPurpurina = ['gold', 'silver', '#ff4081', '#00b0ff', '#8bc34a', '#ffc107'];
+        // Função para mudar a cor do título
+        function mudarCorTitulo() {
+            titulo.style.color = coresPurpurina[Math.floor(Math.random() * coresPurpurina.length)]
+        }
+        // Função para adicionar animação ao título
+        function animarTitulo() {
+            titulo.style.animation = 'pulse 2.2s infinite alternate';
+        }
+        // Função para remover a animação do título
+        function pararAnimacaoTitulo() {
+            titulo.style.animation = '';
+        }
+        // Evento de clique para o título - muda a cor e anima
+        titulo.addEventListener('click', () => {
+            mudarCorTitulo();
+            animarTitulo();
+            setTimeout(pararAnimacaoTitulo, 2500);
+        });
+        // Função para redimensionar o vídeo proporcionalmente
+        function redimensionarVideo() {
+            const videoContainer = document.getElementById('video-container');
+            const video = document.getElementById('video-aniversario');
+            const larguraContainer = videoContainer.offsetWidth;
+            const proporcaoOriginal = 560 / 315;
+            let alturaCalculada = larguraContainer / proporcaoOriginal;
+            video.style.height = `${alturaCalculada}px`;
+        }
+        window.addEventListener('resize', redimensionarVideo);
+        redimensionarVideo();
+    </script>
+</body>
+</html>
